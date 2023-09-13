@@ -5,6 +5,7 @@ const product = require("./routes/product")
 const cart = require("./routes/cart")
 const wishlist = require("./routes/wishlist")
 const review = require("./routes/review")
+const AdminRoute = require("./routes/Admin/AdminAuth")
 
 const app = express()
 
@@ -26,6 +27,7 @@ app.use('/api/wishlist', wishlist)
 
 app.use('/api/review', review)
 
+app.use('/api/admin', AdminRoute)
 
 
 app.listen(7300, async()=>{
