@@ -15,7 +15,7 @@ const SingleUserPage = () => {
     let authToken = localStorage.getItem("Authorization")
     const commonGetRequest = async (url, userId, setData) => {
         try {
-            const { data } = await axios.get(`${url}/${userId}`, {
+            const  {data}  = await axios.get(`${url}/${userId}`, {
                 headers: {
                     'Authorization': authToken
                 }

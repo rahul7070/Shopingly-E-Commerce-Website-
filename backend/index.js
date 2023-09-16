@@ -8,6 +8,7 @@ const wishlist = require("./routes/wishlist")
 const review = require("./routes/review")
 const AdminRoute = require("./routes/Admin/AdminAuth")
 const paymentRoute = require("./routes/paymentRoute")
+const forgotPassword = require("./routes/forgotPassword")
 
 const app = express()
 
@@ -34,6 +35,8 @@ app.use('/api/review', review)
 app.use('/api/admin', AdminRoute)
 
 app.use('/api', paymentRoute)
+
+app.use('/api/password', forgotPassword)
 
 
 app.listen(7300, async()=>{

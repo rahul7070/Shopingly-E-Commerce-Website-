@@ -13,6 +13,8 @@ const CommentCard = ({ userReview, setReviews, reviews, fetchReviews }) => {
     const [isAdmin, setIsAdmin] = useState(false)
     const [value, setValue] = useState(userReview.rating);
     let authToken = localStorage.getItem('Authorization')
+
+    
     useEffect(() => {
         authToken && getUser()
     }, [])
@@ -34,8 +36,10 @@ const CommentCard = ({ userReview, setReviews, reviews, fetchReviews }) => {
                     'Authorization': authToken
                 }
             })
-            toast.success(data.msg, { autoClose: 500, theme: 'colored' })
-            setReviews(reviews.filter(r => r._id !== userReview._id))
+                toast.success(data.msg, { autoClose: 500, theme: 'colored' })
+                setReviews(reviews.filter(r => r._id !== userReview._id))
+            
+            
         } catch (error) {
             toast.success(error, { autoClose: 500, theme: 'colored' })
         }
@@ -51,6 +55,7 @@ const CommentCard = ({ userReview, setReviews, reviews, fetchReviews }) => {
                         }
                     })
                 toast.success(data.msg, { autoClose: 500, theme: 'colored' })
+                console.log(reviews)
                 setReviews(reviews.filter(r => r._id !== userReview._id))
             } catch (error) {
                 console.log(error);
