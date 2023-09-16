@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const authAdmin = require("../../middleware/authAdmin");
 const {body, validationResult} = require('express-validator');
 const dotenv = require('dotenv');
-const { getAllUsersInfo, getSingleUserInfo, getUserCart, getUserWishlist, getUserReview, deleteUserReview, deleteUserCartItem, deleteUserWishlistItem, updateProductDetails, userPaymentDetails, addProduct, deleteProduct } = require('../../controller/AdminControl');
+const { getAllUsersInfo, getSingleUserInfo, getUserCart, getUserWishlist, deleteSingleUserDetails, getUserReview, deleteUserReview, deleteUserCartItem, deleteUserWishlistItem, updateProductDetails, userPaymentDetails, addProduct, deleteProduct } = require('../../controller/AdminControl');
 const { chartData } = require('../../controller/AllProductInfo');
 dotenv.config()
 
@@ -15,7 +15,7 @@ let success = false
 let adminKey = process.env.ADMIN_KEY
 
 router.get('/getusers', authAdmin, getAllUsersInfo);
-router.get('/geteuser/:userId', authAdmin, getSingleUserInfo);
+router.get('/getuser/:userId', authAdmin, getSingleUserInfo);
 router.get('/getcart/:userId', authAdmin, getUserCart);
 router.get('/getwishlist/:userId', authAdmin, getUserWishlist);
 router.get('/getreview/:userId', authAdmin, getUserReview);
@@ -126,10 +126,13 @@ router.post('/addproduct', authAdmin, addProduct);
 
 router.put('/updateproduct/:id', authAdmin, updateProductDetails)
 
-router.delete('/review/:id', authAdmin, deleteUserReview);
-router.delete('/usercart/:id', authAdmin, deleteUserCartItem);
-router.delete('/userwishlist/:id', authAdmin, deleteUserWishlistItem);
+
+// router.delete('/deleteUser/:id', authAdmin, deleteSingleUserDetails);
+router.delete('/deleteReview/:id', authAdmin, deleteUserReview);
+router.delete('/deleteUsercartProd/:id', authAdmin, deleteUserCartItem);
+router.delete('/deleteUserwishlist/:id', authAdmin, deleteUserWishlistItem);
 router.delete('/deleteproduct/:id', authAdmin, deleteProduct);
+
 
 
 module.exports = router

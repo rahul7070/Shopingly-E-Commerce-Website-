@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const authUser = require('../middleware/authUser');
+const authUser = require('../middleware/apiUser');
 
 const dotenv = require('dotenv');
 const { sendEmailLink,  resetPassword,setNewPassword } = require('../controller/forgotPasswordController');

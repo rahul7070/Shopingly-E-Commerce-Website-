@@ -95,6 +95,16 @@ const deleteUserReview = async (req, res) => {
     }
 }
 
+const deleteSingleUserDetails = async (req, res) => {
+    const { id } = req.params;
+    try {
+        let deleteUser = await User.findByIdAndDelete(id)
+        success = true
+        res.send({ success, msg: "User Account deleted successfully" })
+    } catch (error) {
+        res.status(400).send({ msg: "Something went wrong,Please try again letter1" })
+    }
+}
 
 const deleteUserCartItem = async (req, res) => {
     const { id } = req.params;
@@ -194,5 +204,5 @@ module.exports = {
     getUserCart, getUserWishlist,
     getUserReview, deleteUserReview,
     deleteUserCartItem, deleteUserWishlistItem,
-    updateProductDetails, userPaymentDetails, addProduct, deleteProduct
+    updateProductDetails, userPaymentDetails, addProduct, deleteProduct, deleteSingleUserDetails
 }

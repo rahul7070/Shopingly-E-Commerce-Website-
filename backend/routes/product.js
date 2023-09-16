@@ -39,6 +39,8 @@ router.post('/fetchproduct/type', async (req, res) => {
 // to get products category wise
 router.post('/fetchproduct/category', async (req, res) => {
     const { userType, userCategory } = req.body
+    console.log(userCategory)
+
     try {
         if (userCategory == "all") {
             const product = await Product.find({ type: userType })
